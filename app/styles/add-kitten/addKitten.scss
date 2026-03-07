@@ -1,0 +1,272 @@
+@use "../colors/colors.scss" as *;
+
+.add-kitten {
+  width: 100%;
+  height: 100%;
+  padding: {
+    top: 2rem;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+  }
+  
+  & h3 {
+    width: 100%;
+    text-align: center;
+    background-color: $setting-block-bg-color;
+    color: $light-text-color;
+    border: solid 1px $border-color;
+    border-radius: 20px;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding: {
+      top: 1.5rem;
+      bottom: 1.5rem;
+    }
+  }
+}
+
+.add-kitten-form {
+  width: 100%;
+  margin: 0 auto;
+  background-color: $setting-block-bg-color;
+  border: solid 1px $border-color;
+  border-radius: 20px;
+  padding: 2rem;
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+.set-data-kitten {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  
+  label {
+    color: $light-text-color;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    
+    &::before {
+      content: '•';
+      color: $bg-primary;
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+  
+  input, textarea {
+    background-color: $bg-color;
+    border: solid 1px $border-color;
+    border-radius: 12px;
+    padding: 1rem;
+    color: $light-text-color;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    
+    &::placeholder {
+      color: $dashboard-text-color;
+      opacity: 0.5;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: $bg-primary;
+      box-shadow: 0 0 0 3px rgba($bg-primary, 0.2);
+    }
+    
+    &:hover {
+      border-color: lighten($border-color, 10%);
+    }
+  }
+  
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  // Специальные стили для полей с URL
+  input[type="text"] {
+    font-family: monospace;
+    
+    &:valid {
+      border-color: lighten($bg-primary, 20%);
+    }
+  }
+}
+
+// Стили для родительской секции
+.parents-section {
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: solid 1px $border-color;
+  
+  h4 {
+    color: $light-text-color;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+}
+
+.parent-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.parent-block {
+  background-color: rgba($bg-color, 0.5);
+  border: solid 1px $border-color;
+  border-radius: 16px;
+  padding: 1.5rem;
+  
+  h5 {
+    color: $light-text-color;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-color: $bg-primary;
+    padding: 0.5rem;
+    border-radius: 30px;
+  }
+}
+
+// Кнопки отправки
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  
+  button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &[type="submit"] {
+      background-color: $bg-primary;
+      color: $light-text-color;
+      
+      &:hover {
+        background-color: lighten($bg-primary, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($bg-primary, 0.4);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+    
+    &[type="button"] {
+      background-color: $bg-secondary;
+      color: $light-text-color;
+      border: solid 1px $border-color;
+      
+      &:hover {
+        background-color: lighten($bg-secondary, 5%);
+        transform: translateY(-2px);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// Индикаторы обязательных полей
+.required::after {
+  content: '*';
+  color: #ff6b6b;
+  margin-left: 0.3rem;
+}
+
+// Стили для превью изображений (опционально)
+.image-preview {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: $bg-color;
+  border: solid 1px $border-color;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  span {
+    color: $dashboard-text-color;
+    font-size: 0.9rem;
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .add-kitten {
+    padding: 1rem;
+    
+    & h3 {
+      font-size: 1.5rem;
+      padding: 1rem;
+    }
+  }
+  
+  .add-kitten-form {
+    padding: 1.5rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+}
+
+// Анимация загрузки
+.loading {
+  position: relative;
+  opacity: 0.7;
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 3px solid $border-color;
+    border-top-color: $bg-primary;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

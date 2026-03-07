@@ -1,0 +1,95 @@
+$bg-color: #121417;
+$card-bg: #202328;
+$border-color: #3d3d3d;
+$text-secondary: #ababab;
+$accent: #7364db;
+$text-light: #ffffff;
+
+.login-container {
+  width: 100%;
+  height: 100vh;
+  background: $bg-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.login-box {
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  
+  h1 {
+    color: $text-light;
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  p {
+    color: $text-secondary;
+    margin-bottom: 2rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  
+  label {
+    display: block;
+    color: $text-light;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: $bg-color;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    color: $text-light;
+    font-size: 1rem;
+    
+    &:focus {
+      outline: none;
+      border-color: $accent;
+    }
+  }
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: rgba(244, 67, 54, 0.1);
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  background: $accent;
+  color: $text-light;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover:not(:disabled) {
+    background: lighten($accent, 10%);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

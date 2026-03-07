@@ -1,0 +1,209 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// 2. Убираем отступы и поля у html и body
+html,
+body {
+  margin: 0; padding: 0; width: 100%; /* ← вместо 100vw */ min-height: fit-content; overflow-x: clip; /* ← безопаснее, чем hidden */
+  scroll-behavior: smooth;
+}
+
+// 3. Сбрасываем отступы у заголовков, списков, параграфов, блоков
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+hr,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+// 4. Убираем маркеры списков, сбрасываем отступы
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// 5. Сбрасываем стили ссылок
+a {
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+}
+
+// 6. Сбрасываем стили кнопок и полей форм
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+  appearance: none; // Для Safari и мобильных браузеров
+}
+
+// 7. Убираем рамку фокуса у кнопок и ссылок (по желанию можно оставить outline)
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+// 8. Сброс для изображений и мультимедиа
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// 9. Сбрасываем стили таблиц
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 10. Удаляем стили формы по умолчанию у checkbox и radio (по желанию)
+// input[type='checkbox'],
+// input[type='radio'] {
+//   appearance: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   margin: 0;
+//   padding: 0;
+// }
+
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// 12. Убираем полосу прокрутки (по желанию)
+// ::-webkit-scrollbar {
+//   width: 0;
+//   height: 0;
+// }
+
+// 13. Сбрасываем стили списков для <blockquote> и <q>
+blockquote,
+q {
+  quotes: none;
+
+  &::before,
+  &::after {
+    content: '';
+    content: none;
+  }
+}
+
+// 14. Сбрасываем размеры и отступы для всех <fieldset>
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+// 15. Сбрасываем стили для <legend>
+legend {
+  display: block;
+  width: auto;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// 16. Сбрасываем стили для инлайн-элементов <svg>
+svg {
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+// 17. Убираем подчеркивание у <ins> и <del>
+ins,
+del {
+  text-decoration: none;
+}
+
+// 18. Сбрасываем стили для <progress>
+progress {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// 19. Сбрасываем стили для списка <menu>, <dir>
+menu,
+dir {
+  display: block;
+}
+
+// 20. Убираем стили <summary> и <details>
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+// 21. Сбрасываем начальные настройки для <input type="range">
+input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+  }
+
+  &::-ms-thumb {
+    appearance: none;
+  }
+}
+
+// 22. Сбрасываем стили для <textarea>
+textarea {
+  resize: vertical; // или none, если нужно отключить полностью
+  overflow: auto;
+  line-height: inherit;
+  font-family: inherit;
+}
+
