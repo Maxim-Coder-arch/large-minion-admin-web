@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./styles/main/main.scss";
 import Dashboard from "./components/dashboard/dashboard";
 import { ModalProvider } from "./components/modal/ModalContext";
+import Loader from "./components/loader/loader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <ModalProvider>
           {children}
         </ModalProvider>
+        <Loader />
       </body>
     </html>
   );

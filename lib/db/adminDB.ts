@@ -1,17 +1,13 @@
 import { MongoClient, Db, Collection, Document, ObjectId } from 'mongodb';
 import { getDB } from './mongodb';
-
-// Типы для коллекций
 export type CollectionName = 'kittens' | 'adults' | 'graduates' | 'posts' | 'articles' | 'users';
 
-// Базовый интерфейс для всех документов
 export interface BaseDocument {
   _id?: string | ObjectId;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
-// Класс для работы с админкой
 class AdminDB {
   private db: Db | null = null;
   private collections: Map<CollectionName, Collection<Document>> = new Map();

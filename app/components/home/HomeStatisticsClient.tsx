@@ -15,40 +15,29 @@ interface HomeStatisticsClientProps {
 export default function HomeStatisticsClient({ AllData, pointData }: HomeStatisticsClientProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
+  // Все пункты меню теперь только ссылки
   const dropdownItems = {
     "Добавить": [
-      { label: "Добавить котят", href: "/add/kitten" },
-      { label: "Добавить взрослых", href: "/add/adult" },
-      { label: "Добавить выпускников", href: "/add/graduate" },
-      { label: "Добавить посты", href: "/admin/posts/new" },
-      { label: "Добавить статьи", href: "/admin/articles/new" }
+      { label: "Котят", href: "/add/kitten" },
+      { label: "Взрослых", href: "/add/adult" },
+      { label: "Выпускников", href: "/add/graduate" },
+      { label: "Посты", href: "/add/post" },
+      { label: "Статьи", href: "/add/article" }
     ],
     "Удалить": [
-      { label: "Удалить котят", action: "delete-kittens" },
-      { label: "Удалить взрослых", action: "delete-adults" },
-      { label: "Удалить выпускников", action: "delete-graduates" },
-      { label: "Удалить посты", action: "delete-posts" },
-      { label: "Удалить статьи", action: "delete-articles" }
-    ],
-    "Изменить": [
-      { label: "Изменить котят", href: "/admin/kittens" },
-      { label: "Изменить взрослых", href: "/admin/adults" },
-      { label: "Изменить выпускников", href: "/admin/graduates" },
-      { label: "Изменить посты", href: "/admin/posts" },
-      { label: "Изменить статьи", href: "/admin/articles" }
+      { label: "Котят", href: "/entities/kittens" },
+      { label: "Взрослых", href: "/entities/adults" },
+      { label: "Выпускников", href: "/entities/graduates" },
+      { label: "Посты", href: "/entities/posts" },
+      { label: "Статьи", href: "/entities/articles" }
     ],
     "Очистить все данные": [
-      { label: "Очистить всех котят", action: "clear-kittens", danger: true },
-      { label: "Очистить всех взрослых", action: "clear-adults", danger: true },
-      { label: "Очистить всех выпускников", action: "clear-graduates", danger: true },
-      { label: "Очистить все посты", action: "clear-posts", danger: true },
-      { label: "Очистить все статьи", action: "clear-articles", danger: true }
+      { label: "Котят", href: "/admin/kittens/clear" },
+      { label: "Взрослых", href: "/admin/adults/clear" },
+      { label: "Выпускников", href: "/admin/graduates/clear" },
+      { label: "Посты", href: "/admin/posts/clear" },
+      { label: "Статьи", href: "/admin/articles/clear" }
     ]
-  };
-
-  const handleAction = (action: string) => {
-  
-    setActiveDropdown(null);
   };
 
   const toggleDropdown = (buttonLabel: string) => {
@@ -60,18 +49,9 @@ export default function HomeStatisticsClient({ AllData, pointData }: HomeStatist
   };
 
   const buttonsData = [
-    {
-      label: "Добавить",
-    },
-    {
-      label: "Удалить",
-    },
-    {
-      label: "Изменить",
-    },
-    {
-      label: "Очистить все данные",
-    },
+    { label: "Добавить" },
+    { label: "Удалить" },
+    { label: "Очистить все данные" }
   ];
 
   return (
@@ -90,9 +70,7 @@ export default function HomeStatisticsClient({ AllData, pointData }: HomeStatist
           <div className="buttons-board">
             {buttonsData.map((item) => (
               <div key={item.label} className="button-wrapper">
-                <button 
-                  onClick={() => toggleDropdown(item.label)}
-                >
+                <button onClick={() => toggleDropdown(item.label)}>
                   {item.label}
                 </button>
                 
@@ -101,24 +79,14 @@ export default function HomeStatisticsClient({ AllData, pointData }: HomeStatist
                     <div className="dropdown-overlay" onClick={handleClickOutside} />
                     <div className="dropdown-menu">
                       {dropdownItems[item.label as keyof typeof dropdownItems].map((dropdownItem) => (
-                        dropdownItem.href ? (
-                          <Link 
-                            key={dropdownItem.label}
-                            href={dropdownItem.href}
-                            className={`dropdown-item ${dropdownItem.danger ? 'danger' : ''}`}
-                            onClick={() => setActiveDropdown(null)}
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        ) : (
-                          <button
-                            key={dropdownItem.label}
-                            className={`dropdown-item ${dropdownItem.danger ? 'danger' : ''}`}
-                            onClick={() => handleAction(dropdownItem.action || '')}
-                          >
-                            {dropdownItem.label}
-                          </button>
-                        )
+                        <Link
+                          key={dropdownItem.label}
+                          href={dropdownItem.href}
+                          className="dropdown-item"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          {dropdownItem.label}
+                        </Link>
                       ))}
                     </div>
                   </>

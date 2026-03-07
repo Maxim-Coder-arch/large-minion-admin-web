@@ -7,22 +7,22 @@ export const dashboardData: IDashboard[] = [
   },
   {
     lable: "Котята",
-    pageLink: "/kittens",
+    pageLink: "/entities/kittens",
   },
   {
     lable: "Взрослые",
-    pageLink: "/adults",
+    pageLink: "/entities/adults",
   },
   {
     lable: "Выпускники",
-    pageLink: "/graduates",
+    pageLink: "/entities/graduates",
   },
   {
     lable: "Посты",
-    pageLink: "/posts",
+    pageLink: "/entities/posts",
   },
   {
     lable: "Статьи",
-    pageLink: "/articles",
+    pageLink: "/entities/articles",
   },
 ];

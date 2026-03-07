@@ -48,7 +48,7 @@ $light-text-color: #ffffff;
     color: $light-text-color;
     border: solid 1px $border-color;
     border-radius: 20px;
-    font-size: 2rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,7 +64,8 @@ $light-text-color: #ffffff;
     color: $light-text-color;
     border: solid 1px $border-color;
     border-radius: 20px;
-    font-size: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
     padding: {
       top: 1rem;
       bottom: 1rem;
@@ -87,6 +88,30 @@ $light-text-color: #ffffff;
   transition: all 0.3s ease;
   width: calc((100% / 3) - 10px);
   min-width: 350px;
+}
+
+.article-card {
+  background: $setting-block-bg-color;
+  border: 1px solid $border-color;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  width: calc((100% / 3) - 10px);
+  min-width: 350px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  & h4 {
+    color: $light-text-color;
+    font-size: 1.5rem;
+  }
+  & span {
+    color: $dashboard-text-color;
+    font-size: 1rem;
+    line-height: 15px;
+  }
 }
 
 // Обертка изображения

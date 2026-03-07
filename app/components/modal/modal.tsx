@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 interface ModalProps {
   isOpen: boolean;
   title: string;
@@ -21,8 +23,21 @@ export default function Modal({
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={showCancel ? onCancel : undefined}>
-      <div className="modal-window" onClick={e => e.stopPropagation()}>
+    <div 
+    className="modal-overlay" 
+    onClick={showCancel ? onCancel : undefined}
+    >
+      <motion.div 
+      className="modal-window" 
+      initial={{
+      opacity: 0,
+      y: 100
+      }}
+      animate={{
+        opacity: 1,
+        y: 0
+      }}
+      onClick={e => e.stopPropagation()}>
         <h3 className="modal-title">{title}</h3>
         <p className="modal-message">{message}</p>
         <div className="modal-buttons">
@@ -43,7 +58,7 @@ export default function Modal({
             </button>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
