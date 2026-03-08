@@ -10,7 +10,6 @@ export async function DELETE(
     const db = await getDB();
     const collection = db.collection(entity);
     
-    // Находим последний элемент (с максимальным id)
     const lastItem = await collection
       .find({})
       .sort({ id: -1 })

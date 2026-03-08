@@ -37,7 +37,7 @@ export default function AddArticlePage() {
           title: 'Успешно!',
           message: 'Статья успешно добавлена!',
           onConfirm: () => {
-            router.push('/articles');
+            router.push('/entities/articles');
             router.refresh();
           },
           showCancel: false,

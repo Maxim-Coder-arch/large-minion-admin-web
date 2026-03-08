@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import "../../styles/kitten/kitten.scss";
 
 interface HomeStatisticsClientProps {
   AllData: {label: string, value: number}[];
@@ -15,7 +16,6 @@ interface HomeStatisticsClientProps {
 export default function HomeStatisticsClient({ AllData, pointData }: HomeStatisticsClientProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  // Все пункты меню теперь только ссылки
   const dropdownItems = {
     "Добавить": [
       { label: "Котят", href: "/add/kitten" },
@@ -32,11 +32,11 @@ export default function HomeStatisticsClient({ AllData, pointData }: HomeStatist
       { label: "Статьи", href: "/entities/articles" }
     ],
     "Очистить все данные": [
-      { label: "Котят", href: "/admin/kittens/clear" },
-      { label: "Взрослых", href: "/admin/adults/clear" },
-      { label: "Выпускников", href: "/admin/graduates/clear" },
-      { label: "Посты", href: "/admin/posts/clear" },
-      { label: "Статьи", href: "/admin/articles/clear" }
+      { label: "Котят", href: "/entities/kittens/clear" },
+      { label: "Взрослых", href: "/entities/adults/clear" },
+      { label: "Выпускников", href: "/entities/graduates/clear" },
+      { label: "Посты", href: "/entities/posts/clear" },
+      { label: "Статьи", href: "/entities/articles/clear" }
     ]
   };
 
@@ -53,6 +53,56 @@ export default function HomeStatisticsClient({ AllData, pointData }: HomeStatist
     { label: "Удалить" },
     { label: "Очистить все данные" }
   ];
+
+  const getImageSrc = (item: any, type: string) => {
+    if (type === "Посты") {
+      return item.image || '/default-post.jpg';
+    }
+    if (type === "Взрослые" || type === "Выпускники") {
+      return item.portait || '/default-cat.jpg';
+    }
+    return item.image || '/default-cat.jpg';
+  };
+
+  const getItemName = (item: any, type: string) => {
+    if (type === "Посты") {
+      return item.title || 'Без названия';
+    }
+    if (type === "Статьи") {
+      return item.title || 'Без названия';
+    }
+    return item.name || item.title || 'Без имени';
+  };
+
+  const renderCard = (item: any, type: string) => {
+    if (type === "Статьи") {
+      return (
+        <div className="article-card" key={item._id}>
+          <div className="data-kitten">
+            <h4>{item.title}</h4>
+            <span>{item.description?.substring(0, 100)}...</span>
+          </div>
+        </div>
+      );
+    }
+    
+    return (
+      <div className="pet-card-area" key={item._id}>
+        <div className="image-wrapper-area">
+          <Image 
+            src={getImageSrc(item, type)}
+            alt={getItemName(item, type)}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+        <div className="area-overflow">
+          <h4>{getItemName(item, type)}</h4>
+          <span>{item.description}</span>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="universal-styling">
@@ -101,22 +151,11 @@ export default function HomeStatisticsClient({ AllData, pointData }: HomeStatist
             <div className="pets-area" key={index}>
               <h3>{data.label}</h3>
               <div className="pets-area-flex">
-                {data.value.map((pet: any, petIndex: number) => (
-                  <div className="pet-card-area" key={pet._id || petIndex}>
-                    <div className="image-wrapper-area">
-                      <Image 
-                        src={pet.image || pet.portait || '/default-cat.jpg'}
-                        alt={pet.name || pet.title || 'pet'}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                    <div className="area-overflow">
-                      <h4>{pet.name || pet.title}</h4>
-                      <span>{pet.description}</span>
-                    </div>
-                  </div>
-                ))}
+                {data.value.length > 0 ? (
+                  data.value.map((item: any) => renderCard(item, data.label))
+                ) : (
+                  <div className="empty-state">Нет данных</div>
+                )}
               </div>
             </div>
           ))}

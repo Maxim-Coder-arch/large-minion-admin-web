@@ -10,7 +10,6 @@ export async function DELETE(
     const db = await getDB();
     const collection = db.collection(entity);
     
-    // Находим первый элемент (с минимальным id)
     const firstItem = await collection
       .find({})
       .sort({ id: 1 })

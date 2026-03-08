@@ -4,6 +4,9 @@ import Image from "next/image";
 import "../../styles/kitten/kitten.scss";
 import DeleteButton from "../../../cart-explore/DeleteFirstButton";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const entityConfig = {
   kittens: {
     title: "Управление котятами",

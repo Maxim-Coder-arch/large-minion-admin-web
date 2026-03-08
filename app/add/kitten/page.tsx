@@ -49,7 +49,7 @@ export default function AddKittenPage() {
           title: 'Успешно!',
           message: 'Котенок успешно добавлен!',
           onConfirm: () => {
-            router.push('/kittens');
+            router.push('/entities/kittens');
             router.refresh();
           },
           showCancel: false,

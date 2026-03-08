@@ -23,7 +23,7 @@ export default function DeleteButton({ entityType, position }: DeleteButtonProps
   const { showModal } = useModal();
 
   const entityName = entityNames[entityType as keyof typeof entityNames] || 'элемент';
-  const positionText = position === 'first' ? 'первого' : 'последнего';
+  const positionText = position === 'first' ? 'первое добавленное' : 'последнее добавленное';
 
   const performDelete = async () => {
     setIsDeleting(true);
@@ -73,7 +73,7 @@ export default function DeleteButton({ entityType, position }: DeleteButtonProps
 
   return (
     <button onClick={confirmDelete} disabled={isDeleting}>
-      {isDeleting ? '...' : `🗑️ Удалить ${positionText}`}
+      {isDeleting ? '...' : `Удалить ${positionText}`}
     </button>
   );
 }

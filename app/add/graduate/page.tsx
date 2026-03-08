@@ -38,7 +38,7 @@ export default function AddAdultPage() {
           title: 'Успешно!',
           message: 'Взрослый кот успешно добавлен!',
           onConfirm: () => {
-            router.push('/graduates');
+            router.push('/entities/graduates');
             router.refresh();
           },
           showCancel: false,

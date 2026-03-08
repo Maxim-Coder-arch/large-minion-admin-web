@@ -39,7 +39,7 @@ export default function AddPostPage() {
           title: '✅ Успешно!',
           message: 'Пост успешно добавлен!',
           onConfirm: () => {
-            router.push('/posts');
+            router.push('/entities/posts');
             router.refresh();
           },
           showCancel: false,

@@ -1,6 +1,9 @@
 import { getDB } from "@/lib/db/mongodb";
 import HomeStatisticsClient from './HomeStatisticsClient';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function HomeStatistics() {
   const db = await getDB();
   
@@ -24,12 +27,14 @@ export default async function HomeStatistics() {
   const adults = await db.collection('adults').find().toArray();
   const graduates = await db.collection('graduates').find().toArray();
   const posts = await db.collection('posts').find().toArray();
+  const articles = await db.collection('articles').find().toArray(); // ← Добавили статьи
 
   // Преобразуем ObjectId в строки для клиентского компонента
   const plainKittens = kittens.map(k => ({ ...k, _id: k._id.toString() }));
   const plainAdults = adults.map(a => ({ ...a, _id: a._id.toString() }));
   const plainGraduates = graduates.map(g => ({ ...g, _id: g._id.toString() }));
   const plainPosts = posts.map(p => ({ ...p, _id: p._id.toString() }));
+  const plainArticles = articles.map(a => ({ ...a, _id: a._id.toString() })); // ← Добавили
 
   const AllData: {label: string, value: number}[] = [
     {label: "Питомцев", value: totalPets},
@@ -56,13 +61,19 @@ export default async function HomeStatistics() {
     {
       label: "Посты",
       value: plainPosts
+    },
+    {
+      label: "Статьи",                    // ← Добавили блок статей
+      value: plainArticles
     }
   ];
 
   return (
-    <HomeStatisticsClient 
-      AllData={AllData}
-      pointData={pointData}
-    />
+    <>
+      <HomeStatisticsClient 
+        AllData={AllData}
+        pointData={pointData}
+      />
+    </>
   );
 }
