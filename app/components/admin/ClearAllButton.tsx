@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { useModal } from '../modal/ModalContext';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface ClearAllButtonProps {
   entityType: string;
   entityName: string;

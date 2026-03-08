@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useState } from "react";
 import "../../styles/kitten/kitten.scss";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface HomeStatisticsClientProps {
   AllData: {label: string, value: number}[];
   pointData: {

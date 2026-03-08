@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { getDB } from '@/lib/db/mongodb';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // Функция для транслитерации (только для статей)
 function transliterate(text: string): string {
   const map: { [key: string]: string } = {

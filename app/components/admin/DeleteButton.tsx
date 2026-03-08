@@ -4,6 +4,9 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useModal } from '../modal/ModalContext';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface DeleteButtonProps {
   entityType: string;
   position: 'first' | 'last';
