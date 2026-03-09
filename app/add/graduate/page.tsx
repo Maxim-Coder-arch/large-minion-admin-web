@@ -20,6 +20,7 @@ export default function AddAdultPage() {
       name: formData.get('name'),
       description: formData.get('description'),
       portait: formData.get('portait'),
+      urlToVk: formData.get('urlToVk'),
     };
 
     try {
@@ -112,7 +113,15 @@ export default function AddAdultPage() {
                 placeholder="https://example.com/cat.jpg"
               />
             </div>
-
+            <div className="set-data-kitten">
+              <label htmlFor="urlToVk">Ссылка на пост ВК</label>
+              <input 
+                type="url" 
+                id="urlToVk"
+                name="urlToVk"
+                placeholder="https://vk.com/wall-95911846_..."
+              />
+            </div>
             <div className="form-actions">
               <button type="submit" disabled={loading}>
                 {loading ? 'Сохранение...' : 'Добавить выпускника'}

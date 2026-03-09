@@ -20,6 +20,7 @@ export default function AddAdultPage() {
       name: formData.get('name'),
       description: formData.get('description'),
       portait: formData.get('portait'),
+      urlToVk: formData.get('urlToVk'),
     };
 
     try {
@@ -35,7 +36,7 @@ export default function AddAdultPage() {
 
       if (response.ok) {
         showModal({
-          title: 'Успешно!',
+          title: '✅ Успешно!',
           message: 'Взрослый кот успешно добавлен!',
           onConfirm: () => {
             router.push('/entities/adults');
@@ -45,7 +46,7 @@ export default function AddAdultPage() {
         });
       } else {
         showModal({
-          title: 'Ошибка',
+          title: '❌ Ошибка',
           message: data.error || 'Произошла ошибка при добавлении',
           onConfirm: () => {},
           showCancel: false,
@@ -53,7 +54,7 @@ export default function AddAdultPage() {
       }
     } catch {
       showModal({
-        title: 'Ошибка',
+        title: '❌ Ошибка',
         message: 'Произошла ошибка при сохранении',
         onConfirm: () => {},
         showCancel: false,
@@ -114,6 +115,16 @@ export default function AddAdultPage() {
               <small style={{ color: '#ababab', marginTop: '0.3rem', display: 'block' }}>
                 Поле в БД называется portait
               </small>
+            </div>
+
+            <div className="set-data-kitten">
+              <label htmlFor="urlToVk">Ссылка на пост ВК</label>
+              <input 
+                type="url" 
+                id="urlToVk"
+                name="urlToVk"
+                placeholder="https://vk.com/wall-95911846_..."
+              />
             </div>
 
             <div className="form-actions">
