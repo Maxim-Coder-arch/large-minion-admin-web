@@ -158,7 +158,6 @@ $light-text-color: #ffffff;
   position: fixed;
   top: 10%;
   left: 0;
-  transform: translateY(-50%);
   background: $bg-primary;
   border: none;
   border-top-right-radius: 12px;
@@ -172,6 +171,7 @@ $light-text-color: #ffffff;
   z-index: 997;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
+  max-width: 20px;
   
   &:hover {
     background: lighten($bg-primary, 10%);

@@ -34,7 +34,7 @@ export default function ClearAllButton({ entityType, entityName, count }: ClearA
           title: '✅ Успешно!',
           message: `Все ${entityName} (${count} записей) удалены`,
           onConfirm: () => {
-            router.push(`/admin/entities/${entityType}`);
+            router.push(`/entities/${entityType}`);
             router.refresh();
           },
           showCancel: false,
@@ -72,7 +72,7 @@ export default function ClearAllButton({ entityType, entityName, count }: ClearA
     return (
       <div className="no-data-message">
         <p>Нет данных для удаления</p>
-        <Link href={`/admin/entities/${entityType}`} className="back-link">
+        <Link href={`/entities/${entityType}`} className="back-link">
           Вернуться к списку
         </Link>
       </div>

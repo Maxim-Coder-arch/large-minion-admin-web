@@ -26,10 +26,8 @@ export default async function ClearEntityPage({ params }: PageProps) {
   const db = await getDB();
   const collection = db.collection(type);
   
-  // Получаем количество записей
   const count = await collection.countDocuments();
   
-  // Получаем последние 5 записей для предпросмотра
   const recentItems = await collection
     .find({})
     .sort(type === 'articles' ? { index: -1 } : { id: -1 })

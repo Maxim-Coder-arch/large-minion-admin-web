@@ -6,17 +6,13 @@ export const revalidate = 0;
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { entity: string } }
+  { params }: { params: { type: string } }
 ) {
   try {
-    const { entity } = await params;
+    const { type } = await params;
     const db = await getDB();
-    const collection = db.collection(entity);
+    const collection = db.collection(type);
     
-    // Получаем количество до удаления
-    const count = await collection.countDocuments();
-    
-    // Удаляем все документы
     const result = await collection.deleteMany({});
     
     return NextResponse.json({ 
@@ -25,8 +21,7 @@ export async function DELETE(
       message: `Удалено ${result.deletedCount} записей`
     });
     
-  } catch (error) {
-    console.error('❌ Clear error:', error);
+  } catch {
     return NextResponse.json(
       { error: 'Ошибка при очистке' },
       { status: 500 }

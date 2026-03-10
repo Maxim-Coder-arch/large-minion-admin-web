@@ -11,6 +11,11 @@ export const dashboardData: IDashboard[] = [
     blank: true,
   },
   {
+    lable: "Google search console (статистика)",
+    pageLink: "https://search.google.com/u/2/search-console?resource_id=https%3A%2F%2Flarge-minion.vercel.app%2F",
+    blank: true,
+  },
+  {
     lable: "Котята",
     pageLink: "/entities/kittens",
   },
